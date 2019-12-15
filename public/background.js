@@ -16,6 +16,19 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 });
 
+chrome.contextMenus.create({
+  id: 'Enable',
+  title: 'Enable',
+  type: 'radio',
+  contexts: ['all'],
+});
+chrome.contextMenus.create({
+  id: 'Disable',
+  title: 'Disable',
+  type: 'radio',
+  contexts: ['all'],
+});
+
 chrome.contextMenus.onClicked.addListener(function(item, tab) {
   updateStorage(item.menuItemId);
   chrome.contextMenus.update(item.menuItemId, { checked: true })
