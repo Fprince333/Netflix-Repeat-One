@@ -21,12 +21,7 @@ $(_ => {
 });
 
 function enableRepeatEpisode(selectors) {
-	/*Pulls all classes that start with "Watch Next" */
-	selectors.push(".WatchNext-autoplay"); // Unknown if other international have localized class names
-	selectors.push('.WatchNext-still-hover-container');
-	selectors.push('[aria-label^="Next episode"]');
 	selectors.push('[data-uia^="next-episode-seamless-button"]');
-	selectors.push('.draining');
 }
 
 function enableRepeatMovie(selectors) {
