@@ -1,7 +1,7 @@
 {
   "name": "Netflix Repeat One",
-  "version": "0.0.4",
-  "manifest_version": 2,
+  "version": "0.1.0",
+  "manifest_version": 3,
   "description": "Repeat the same episode or movie over and over",
   "homepage_url": "https://github.com/Fprince333/Netflix-Repeat-One",
   "icons": {
@@ -11,18 +11,19 @@
   },
   "default_locale": "en",
   "background": {
-    "scripts": [
-      "js/common.js"
-    ],
-    "persistent": true
+    "service_worker": "js/common.js"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "icons/icon19.png",
     "default_title": "Netflix Repeat One",
     "default_popup": "src/page_action/page_action.html"
   },
   "permissions": [
     "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
     "*://*.netflix.com/*"
   ],
   "content_scripts": [

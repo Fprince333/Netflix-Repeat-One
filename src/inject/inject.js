@@ -6,6 +6,7 @@ const MAX_TRIES_MONITOR_SKIP = 10;
 function onMessage(message, sender, sendResponse) {
 	if (message.action === 'optionsChanged') {
 		options = message.options;
+		return true;
 	}
 }
 
@@ -25,7 +26,7 @@ function enableRepeatEpisode(selectors) {
 }
 
 function enableRepeatMovie(selectors) {
-	selectors.push('.postplay');
+	selectors.push('[data-uia^="postplay-background-play"]');
 }
 
 function startMonitoringForSelectors(selectors, numTries) {
@@ -38,7 +39,7 @@ function startMonitoringForSelectors(selectors, numTries) {
 		let elems = document.querySelectorAll(selector);
 		for (const elem of elems) {
 			const newDataUia = elem.getAttribute("data-uia") || null;
-			const isEpisode = (newDataUia && newDataUia.includes('watch-credits')) || (newDataUia &&newDataUia.includes('next-episode'));
+			const isEpisode = (newDataUia && newDataUia.includes('watch-credits')) || (newDataUia && newDataUia.includes('next-episode'));
 			const isMovie = elem.classList;
 			if (isEpisode && options.repeatEpisode) {
 				window.location.reload()
